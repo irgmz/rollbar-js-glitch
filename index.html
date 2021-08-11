@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Start Style-->
   <link rel="stylesheet" href="style.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
   </style>
-  <!-- End Style-->
-
   <!-- Start Rollbar-->
   <script>
     var _rollbarConfig = {
-      accessToken: "access_token", //UPDATE ROLLBAR ACCESS TOKEN HERE
+      accessToken: "89e590c570ca42f9b74785349c863218", //UPDATE ROLLBAR ACCESS TOKEN HERE
       captureUncaught: true,
       captureUnhandledRejections: true,
+      addErrorContext: true,
+      scrubTelemetryInputs: true,
       payload: {
             environment: "production",
-	          code_version: 1.1,
+            context: "auth/login",
+	          code_version: "285c5687cac57b4ce84084b97a7bdbc4fd8d499f",
               server: {
-			          root: "https://rollbar-js-demo.glitch.me/"
+			          root: "https://rollbar-js-demo.glitch.me/",
+                host: "web"
 	         },
           }
       };
@@ -54,7 +55,7 @@
             email: document.getElementById('email').value,
           },
           custom: {
-            transactionId: document.getElementById('requestid').value,
+            requestId: document.getElementById('requestid').value,
           }
         }
       });
@@ -78,7 +79,7 @@
 
     <script>
       function error() {
-        Rollbar.error("An error occurred");
+        Rollbar.error("ERROR");
       }
     </script>
   
@@ -86,7 +87,7 @@
   
     <script>
       function critical() {
-        Rollbar.critical("A critical error occurred");
+        Rollbar.critical("CRITICAL");
       }
     </script>
   </div>
